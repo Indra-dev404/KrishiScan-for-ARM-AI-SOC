@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KrishiScan — Offline Crop-Disease Detection</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">🌱 <strong>KrishiScan</strong></div>
+  <div class="offline-badge" title="All AI inference happens on your device. No internet needed.">📴 100% OFFLINE</div>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>Snap a leaf. Know the disease.</h1>
+    <p>AI-powered crop-disease detection that runs <strong>entirely on your device</strong> — no internet, no server, no waiting.</p>
+  </section>
+
+  <section id="model-status" class="status-card">
+    <span class="spinner"></span><span id="status-text">Loading AI model…</span>
+  </section>
+
+  <section id="upload-section" class="card hidden">
+    <div id="dropzone" class="dropzone">
+      <div class="dz-icon">📷</div>
+      <p><strong>Drop a leaf photo here</strong> or tap to choose</p>
+      <p class="dz-hint">JPG / PNG — works with your phone camera too</p>
+      <input type="file" id="file-input" accept="image/*" hidden>
+    </div>
+    <div class="btn-row">
+      <button id="camera-btn" class="btn secondary">📸 Use Camera</button>
+      <input type="file" id="camera-input" accept="image/*" capture="environment" hidden>
+    </div>
+  </section>
+
+  <section id="result-section" class="card hidden">
+    <div class="result-grid">
+      <div class="preview-wrap">
+        <img id="preview" alt="Uploaded leaf">
+      </div>
+      <div class="diagnosis">
+        <p class="label">DIAGNOSIS</p>
+        <h2 id="disease-name">—</h2>
+        <div class="conf-row">
+          <div class="conf-bar"><div id="conf-fill"></div></div>
+          <span id="conf-text">—</span>
+        </div>
+        <div id="top3" class="top3"></div>
+        <button id="again-btn" class="btn secondary">🔄 Scan another leaf</button>
+      </div>
+    </div>
+    <div id="advisory" class="advisory"></div>
+    <p class="disclaimer">⚠️ General guidance only. Confirm with your local agricultural extension officer before applying any chemical treatment.</p>
+  </section>
+
+  <section class="card how">
+    <h3>How it works — fully offline</h3>
+    <ol>
+      <li><strong>You</strong> upload or capture a leaf photo.</li>
+      <li><strong>TinyCNN</strong> (0.39M params, distilled from EfficientNet-B0) classifies it <em>in your browser</em>.</li>
+      <li><strong>KrishiScan</strong> shows the disease plus instant remedy advisory — no data ever leaves your device.</li>
+    </ol>
+    <div class="specs">
+      <span>🧠 0.39M params</span><span>💾 0.41 MB (INT8)</span><span>⚡ ~13 ms</span><span>🎯 99.4% test acc.</span>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>KrishiScan v1.0 POC · Built for offline-first farming · Model: knowledge-distilled TinyCNN</p>
+</footer>
+
+<script src="ort.min.js"></script>
+<script src="labels.js"></script>
+<script src="advisories.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

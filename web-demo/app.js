@@ -26,7 +26,7 @@ async function initModel() {
     $("upload-section").classList.remove("hidden");
   } catch (e) {
     console.error(e);
-    setStatus("❌ Could not load the AI model. Make sure <code>student.onnx</code> is in the repo root.");
+    setStatus("❌ Could not load the AI model. Make sure <code>student.onnx</code> sits next to this page (same folder).");
   }
 }
 

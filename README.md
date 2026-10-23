@@ -69,7 +69,7 @@ Grad-CAM sanity check: 6/6 correct predictions with heatmaps localising on disea
 
 ## 👥 Team
 
-Indrajit Biswas (lead) · Parinidhi Jain · Soumyajit Chatterjee
+Indrajit Biswas (lead) · Parinidhi Jain
 MCKV Institute of Engineering, Liluah, Howrah, West Bengal, India
 
 ## 📄 License

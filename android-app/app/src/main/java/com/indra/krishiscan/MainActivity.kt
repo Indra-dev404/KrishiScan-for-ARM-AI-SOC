@@ -31,6 +31,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import java.io.File
+import org.opencv.android.OpenCVLoader
 import java.io.PrintWriter
 import java.io.StringWriter
 import java.util.concurrent.atomic.AtomicBoolean
@@ -103,6 +104,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installCrashReporter()
+        // Load OpenCV's native library. Without this every SeverityEngine call throws
+        // UnsatisfiedLinkError, which is caught below, and the severity chip silently never shows.
+        if (!OpenCVLoader.initLocal()) Log.e("KrishiScan", "OpenCV failed to load")
         setContentView(R.layout.activity_main)
         applySystemBarInsets()
         showLastCrashIfAny()
